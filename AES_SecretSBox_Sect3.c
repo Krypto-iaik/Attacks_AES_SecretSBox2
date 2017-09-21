@@ -703,7 +703,7 @@ int subspaceTest(word8 key[][4], word8 key2, double *cost)
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-/**Key-recovery attack on AES with a single secret S-Box (see App. F.1 - implementation on small scale AES).
+/**Key-recovery attack on AES with a single secret S-Box (see Sect. 3 - implementation on small scale AES).
 This attack exploits the fact that two coefficient of each row of the MixColumns matrix are equal.
 
 General Idea:
@@ -750,7 +750,7 @@ int main()
 
     printf("5-round KEY-RECOVERY ATTACK on AES with a SINGLE SECRET S-Box.\n\n");
 
-    printf("Implementation of the attack described in App. F.1 on small scale AES - it exploits the fact that two coefficients of each row of MC are equal.\n");
+    printf("Implementation of the attack described in Sect. 3 on small scale AES - it exploits the fact that two coefficients of each row of MC are equal.\n");
     printf("For each test, the program generates texts and counts the total number of collisions. For the right key, this number is always even.\n\n");
 
     printf("It prints the following:\n");
