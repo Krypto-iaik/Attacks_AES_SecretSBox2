@@ -6,11 +6,11 @@ Programs:
 
 Key-Recovery Attacks on AES with a single Secret S-Box:
 
-1) AES_SecretSBox_AppH1.c
+1) AES_SecretSBox_Sect3.c
 
-2) AES_SecretSBox_AppH2.c
+2) AES_SecretSBox_Sect5.c
 
-3) AES_SecretSBox_AppH3.c
+3) AES_SecretSBox_AppB.c
 
 The programs should run with almost C-compilers (we have used gcc version 4.8.1). None of these programs is speed-optimized, they are for verification purposes only.
 
@@ -27,23 +27,23 @@ However, since the properties that they exploit are independent of the fact that
 For simplicity, the aim of all the attacks is to find part of the key.
 However, the same procedure can be used to find all the key.
 
-Both for "AES_SecretSBox_AppH1.c" and "AES_SecretSBox_AppH2.c", one can choose the implementation of these two attacks using the parameter IMPLEMENTATION (line 49).
+Both for "AES_SecretSBox_Sect3.c" and "AES_SecretSBox_AppB.c", one can choose the implementation of these two attacks using the parameter IMPLEMENTATION (line 49).
 In particular, if IMPLEMENTATION is equal to 0, then one uses the re-ordering algorithm. If IMPLEMENTATION is equal to 1, then one uses data-structure.
 More details can be found in the paper.
 
-1) "AES_SecretSBox_AppH1.c" verifies the attack on 5-round AES with a single Secret S-Box described in App. H.1. It exploits the fact that two coefficients of each row of the MixColumns matrix are equal.
+1) "AES_SecretSBox_Sect3.c" verifies the attack on 5-round AES with a single Secret S-Box described in Sect. 3. It exploits the fact that two coefficients of each row of the MixColumns matrix are equal.
 The idea is to choose a set of plaintexts that depends on a guessed value of the key. It is possible to prove that the number of collisions among the ciphertexts in the same coset of M_J for |J|=3 is always even if the guessed key is the right one, while this happens with probability 50% if the guessed key is wrong.
 The secret key can be chosen in the main function. The number of tests (or equivalent of initial sets used for the attack) can be chosen by the parameter NUMBER_TEST (line 46) - we suggest to choose NUMBER_TEST >=3 to have a probability to discard all the wrong keys higher than 95%.
 Time of execution: 15 sec - IMPLEMENTATION = 0;
 Time of execution: 45 sec - IMPLEMENTATION = 1.
 
-2) "AES_SecretSBox_AppH2.c" verifies the attack on 5-round AES with a single Secret S-Box described in App. H.2. It exploits the fact that the sum of three coefficients of each row of the MixColumns matrix is equal to zero.
+2) "AES_SecretSBox_AppB.c" verifies the attack on 5-round AES with a single Secret S-Box described in App. B. It exploits the fact that the sum of three coefficients of each row of the MixColumns matrix is equal to zero.
 The idea is to choose a set of plaintexts that depends on a guessed value of the key. It is possible to prove that the number of collisions among the ciphertexts in the same coset of M_J for |J|=3 is always a multiple of 4 if the guessed key is the right one, while this happens with probability 50% if the guessed key is wrong.
 The secret key can be chosen in the main function. The number of tests (or equivalent of initial sets used for the attack) can be chosen by the parameter NUMBER_TEST (line 46) - we suggest to choose NUMBER_TEST >=2 to have a probability to discard all the wrong keys higher than 95%.
 Time of execution: 3.5 min - IMPLEMENTATION = 0.
 Time of execution: 8 min - IMPLEMENTATION = 1.
 
-3) "AES_SecretSBox_AppH3.c" verifies the attack on 5-round AES with a single Secret S-Box described in App. H.3. It exploits the fact that the sum of three coefficients of each row of the MixColumns matrix is equal to zero (in a different way w.r.t. "AES_SecretSBox_AppF2.c").
+3) "AES_SecretSBox_Sect5.c" verifies the attack on 5-round AES with a single Secret S-Box described in Sect. 5. It exploits the fact that the sum of three coefficients of each row of the MixColumns matrix is equal to zero (in a different way w.r.t. "AES_SecretSBox_AppF2.c").
 The idea is to choose a set of plaintexts that depends on a guessed value of the key. It is possible to prove that the number of collisions among the ciphertexts in the same coset of M_J for |J|=3 is always a multiple of 2 if the guessed key is the right one, while this happens with probability 50% if the guessed key is wrong.
 The secret key can be chosen in the main function. The number of tests (or equivalent of initial sets used for the attack) can be chosen by the parameter NUMBER_TEST (line 46) - we suggest to choose NUMBER_TEST >=11 to have a probability to discard all the wrong keys higher than 95%.
 Time of execution: 40 sec.
