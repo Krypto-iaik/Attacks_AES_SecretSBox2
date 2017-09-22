@@ -435,9 +435,9 @@ void testMatrixMDS()
     for(aa = 0; aa<256; aa++)
     {
         a = (word8) aa;
+        printf("step %d of 255...\n", aa);
         for(bb = 0; bb<256; bb++)
         {
-            printf("%d - %d\n", aa, bb);
             b = (word8) bb;
             for(cc = 0; cc<256; cc++)
             {
