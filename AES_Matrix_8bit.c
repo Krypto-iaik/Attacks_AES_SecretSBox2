@@ -298,11 +298,10 @@ void testMatrix()
 
     for(aa = 0; aa<256; aa++)
     {
+        printf("step %d of 255...\n", aa);
         a = (word8) aa;
-        printf("aaaIN %d\n", aa);
         for(bb = 0; bb<256; bb++)
         {
-            printf("%d\n", bb);
             b = (word8) bb;
             for(cc = 0; cc<256; cc++)
             {
